@@ -8,5 +8,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthContexProvider>
       <App />
     </AuthContexProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
