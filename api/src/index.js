@@ -1,5 +1,8 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
 import upload from './utils/upload';
 import authRoutes from './routes/auth';
 import userRoutes from './routes/user';
@@ -7,8 +10,11 @@ import postRoutes from './routes/posts';
 
 const app = express();
 
+app.use(cors());
+app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
+app.use(morgan('combined'));
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
   const { file } = req;
