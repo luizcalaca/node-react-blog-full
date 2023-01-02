@@ -10,12 +10,13 @@ import postRoutes from './routes/posts';
 
 const app = express();
 
-app.use(cors());
 app.use(helmet());
+app.use(cors());
 app.use(express.json());
-app.use(cookieParser());
+
 app.use(morgan('combined'));
 
+app.use(cookieParser());
 app.post('/api/upload', upload.single('file'), (req, res) => {
   const { file } = req;
   res.status(200).json(file.filename);
